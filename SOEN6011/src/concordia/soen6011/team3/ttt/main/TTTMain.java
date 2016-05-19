@@ -1,6 +1,5 @@
 package concordia.soen6011.team3.ttt.main;
 
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import concordia.soen6011.team3.ttt.ui.TTTFrame;
@@ -25,7 +24,6 @@ public class TTTMain {
 		mainUi.pack();
 		mainUi.setLocationRelativeTo(null);
 		mainUi.setVisible(true);
-		mainUi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/**

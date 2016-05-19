@@ -2,9 +2,12 @@ package concordia.soen6011.team3.ttt.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
@@ -77,8 +80,25 @@ public class TTTFrame extends JFrame {
 		this.setTitle("Tic-Tac-Toe");
 		this.setPreferredSize(new Dimension(600, 600));
 		this.setLayout(new BorderLayout());
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		
+		
+		addWindowListener(new WindowAdapter() {
+		    
+			@Override
+		    public void windowClosing(WindowEvent we)
+		    { 
+		        String ObjButtons[] = {"Yes","No"};
+		        int PromptResult = JOptionPane.showOptionDialog(null,"Are you sure you want to exit?","ZeroX",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
+		        
+		        if(PromptResult==JOptionPane.YES_OPTION)
+		        {
+		            System.exit(0);
+		        }
+		    }
+		});
+		
+		
 		this.setLocationRelativeTo(this.getOwner());
 
 		welcomeMessageLabel.setText("Welcome to ZeroX");
@@ -139,5 +159,6 @@ public class TTTFrame extends JFrame {
 	public TTTCanvas getTTTCanvas() {
 		return tttCanvas;
 	}
+
 
 }
