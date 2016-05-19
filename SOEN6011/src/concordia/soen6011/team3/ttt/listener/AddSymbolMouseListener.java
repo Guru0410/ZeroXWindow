@@ -44,10 +44,10 @@ public class AddSymbolMouseListener extends MouseAdapter {
 
 					if (this.tttFrame.getTTTBoard().getPlayerTurn() == TTTBoard.O_TURN) {
 						this.tttFrame.getTTTBoard().getTTTSquares()[col][row]
-								.setSymbol(new TTTSymbol(TTTSymbol.O_SYMBOL));
+								.setSymbol(new TTTSymbol(TTTSymbol.O_SYMBOL, this.tttFrame.getTTTBoard()));
 					} else {
 						this.tttFrame.getTTTBoard().getTTTSquares()[col][row]
-								.setSymbol(new TTTSymbol(TTTSymbol.X_SYMBOL));
+								.setSymbol(new TTTSymbol(TTTSymbol.X_SYMBOL, this.tttFrame.getTTTBoard()));
 					}
 					this.tttFrame.getTTTBoard().nextPlayerTurn();
 

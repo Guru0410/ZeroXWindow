@@ -1,5 +1,6 @@
 package concordia.soen6011.team3.ttt.object;
 
+
 import java.awt.Graphics2D;
 
 import concordia.soen6011.team3.ttt.ui.TTTCanvas;
@@ -67,7 +68,7 @@ public class TTTBoard extends TTTGameElement {
 	 * 
 	 */
 	private boolean playerTurn;
-
+	
 	/**
 	 * 
 	 */
@@ -83,7 +84,7 @@ public class TTTBoard extends TTTGameElement {
 		this.tttSquares = new TTTSquare[this.columns][this.rows];
 		for (int col = 0; col < this.columns; col++) {
 			for (int row = 0; row < this.rows; row++) {
-				tttSquares[col][row] = new TTTSquare();
+				tttSquares[col][row] = new TTTSquare(new TTTSymbol(), this);
 			}
 		}
 
@@ -105,7 +106,7 @@ public class TTTBoard extends TTTGameElement {
 		this.tttSquares = new TTTSquare[this.columns][this.rows];
 		for (int col = 0; col < this.columns; col++) {
 			for (int row = 0; row < this.rows; row++) {
-				tttSquares[col][row] = new TTTSquare();
+				tttSquares[col][row] = new TTTSquare(new TTTSymbol(), this);
 			}
 		}
 
@@ -222,6 +223,7 @@ public class TTTBoard extends TTTGameElement {
 				tttSquares[col][row].drawObject(graphics2d);
 			}
 		}
+		
 	}
 
 }

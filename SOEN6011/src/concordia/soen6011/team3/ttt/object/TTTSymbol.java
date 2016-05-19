@@ -40,8 +40,36 @@ public class TTTSymbol extends TTTGameElement {
 	 * 
 	 */
 	public static int size;
+	
+	/**
+	 * 
+	 */
+	private TTTBoard tttBoard;
+	
+	/**
+	 * 
+	 */
+	private boolean isMouseOn;
 
 	
+	/**
+	 * 
+	 */
+	public void setMouseOn(boolean isMouseOn) {
+		this.isMouseOn = isMouseOn;
+	}
+
+	
+	
+	/**
+	 * 	
+	 * @param tttBoard
+	 */
+	public void setTTTBoard(TTTBoard tttBoard) {
+		this.tttBoard = tttBoard;
+	}
+	
+
 	// attributes to draw X symbol
 	private int[] xpoints = new int[4];
 	private int[] ypoints = new int[4];
@@ -59,6 +87,16 @@ public class TTTSymbol extends TTTGameElement {
 	 */
 	public TTTSymbol(int symbolType) {
 		this.symbolType = symbolType;
+	}
+
+
+	/**
+	 * 
+	 * @param symbolType
+	 */
+	public TTTSymbol(int symbolType, TTTBoard tttBoard) {
+		this.symbolType = symbolType;
+		this.tttBoard = tttBoard;
 	}
 
 	/**
@@ -82,9 +120,12 @@ public class TTTSymbol extends TTTGameElement {
 	 */
 	public void drawObject(Graphics2D graphics2d) {
 
-		graphics2d.setColor(Color.BLUE);
-
-		if (this.symbolType == TTTSymbol.X_SYMBOL) {
+		if(this.symbolType == TTTSymbol.EMPTY_SYMBOL)
+			graphics2d.setColor(Color.BLACK);
+		else
+			graphics2d.setColor(Color.BLUE);
+		
+		if ( (this.symbolType == TTTSymbol.X_SYMBOL) || ((this.tttBoard.getPlayerTurn() == TTTBoard.X_TURN) && this.isMouseOn) ) {
 			// draw X
 			xpoints[0] = this.getXPosition() + (int) (TTTSymbol.size * 0.1 * 0.707);
 			xpoints[1] = this.getXPosition() - (int) (TTTSymbol.size * 0.1 * 0.707);
@@ -106,18 +147,19 @@ public class TTTSymbol extends TTTGameElement {
 			ypoints[3] = this.getYPosition() + TTTSymbol.size - (int) (TTTSymbol.size * 0.1 * 0.707);
 			graphics2d.fillPolygon(xpoints, ypoints, 4);
 
-		} else if (this.symbolType == TTTSymbol.O_SYMBOL) {
+		} else if ( (this.symbolType == TTTSymbol.O_SYMBOL) || ((this.tttBoard.getPlayerTurn() == TTTBoard.O_TURN) && this.isMouseOn)) {
 			// draw O
 			graphics2d.fillOval(this.getXPosition(), this.getYPosition(), TTTSymbol.size, TTTSymbol.size);
-			graphics2d.setColor(Color.WHITE);
+			
+			if(this.symbolType == TTTSymbol.EMPTY_SYMBOL)
+				graphics2d.setColor(Color.LIGHT_GRAY);
+			else
+				graphics2d.setColor(Color.WHITE);
+			
 			graphics2d.fillOval(this.getXPosition() + (int) (TTTSymbol.size * 0.15),
 					this.getYPosition() + (int) (TTTSymbol.size * 0.15), (int) (TTTSymbol.size * 0.7),
 					(int) (TTTSymbol.size * 0.7));
-		} else if (this.symbolType == TTTSymbol.EMPTY_SYMBOL) {
-			
-			
-			
-		}
+		} 
 		
 		
 	}

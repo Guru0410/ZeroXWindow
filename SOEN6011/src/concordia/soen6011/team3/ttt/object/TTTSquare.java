@@ -38,7 +38,20 @@ public class TTTSquare extends TTTGameElement {
 	/**
 	 * 
 	 */
+	private TTTBoard tttBoard;
+	
+	/**
+	 * 
+	 */
 	private boolean isMouseOn;
+
+	/**
+	 * 	
+	 * @param tttBoard
+	 */
+	public void setTTTBoard(TTTBoard tttBoard) {
+		this.tttBoard = tttBoard;
+	}
 
 	
 	/**
@@ -69,7 +82,7 @@ public class TTTSquare extends TTTGameElement {
 	 */
 	public TTTSquare() {
 		TTTSquare.size = TTTSquare.MIN_SIZE;
-		this.tttSymbol = new TTTSymbol();
+		this.tttSymbol = new TTTSymbol(TTTSymbol.EMPTY_SYMBOL, this.tttBoard);
 		this.isMouseOn = false;
 
 	}
@@ -82,6 +95,8 @@ public class TTTSquare extends TTTGameElement {
 	public TTTSquare(TTTSymbol tttSymbol, TTTBoard tttBoard) {
 		TTTSquare.size = TTTSquare.MIN_SIZE;
 		this.tttSymbol = tttSymbol;
+		this.tttBoard = tttBoard;
+		this.tttSymbol.setTTTBoard(this.tttBoard);
 		this.isMouseOn = false;
 	}
 
@@ -101,6 +116,7 @@ public class TTTSquare extends TTTGameElement {
 	 */
 	public void setSymbol(TTTSymbol tttSymbol) {
 		this.tttSymbol = tttSymbol;
+		this.tttSymbol.setTTTBoard(this.tttBoard);
 	}
 
 	/**
@@ -109,7 +125,7 @@ public class TTTSquare extends TTTGameElement {
 	 * @return
 	 */
 	public void clean() {
-		this.tttSymbol = new TTTSymbol();
+		this.tttSymbol = new TTTSymbol(TTTSymbol.EMPTY_SYMBOL, this.tttBoard);
 	}
 
 	/**
@@ -121,8 +137,10 @@ public class TTTSquare extends TTTGameElement {
 		// draw white square
 		if (this.isMouseOn && (this.tttSymbol.getSymbolType() == TTTSymbol.EMPTY_SYMBOL)) {
 			graphics2d.setColor(Color.LIGHT_GRAY);
+			this.tttSymbol.setMouseOn(true);
 		} else {
 			graphics2d.setColor(Color.WHITE);
+			this.tttSymbol.setMouseOn(false);
 		}
 		graphics2d.fillRect(this.getXPosition(), this.getYPosition(), TTTSquare.size, TTTSquare.size);
 
