@@ -82,6 +82,8 @@ public class TTTBoard extends TTTGameElement {
 
 		// init squares
 		this.tttSquares = new TTTSquare[this.columns][this.rows];
+		validBoard(this.columns, this.rows);
+		
 		for (int col = 0; col < this.columns; col++) {
 			for (int row = 0; row < this.rows; row++) {
 				tttSquares[col][row] = new TTTSquare(new TTTSymbol(), this);
@@ -104,6 +106,7 @@ public class TTTBoard extends TTTGameElement {
 
 		// init squares
 		this.tttSquares = new TTTSquare[this.columns][this.rows];
+		validBoard(this.columns, this.rows);
 		for (int col = 0; col < this.columns; col++) {
 			for (int row = 0; row < this.rows; row++) {
 				tttSquares[col][row] = new TTTSquare(new TTTSymbol(), this);
@@ -113,6 +116,17 @@ public class TTTBoard extends TTTGameElement {
 		// init player
 		this.playerTurn = TTTBoard.O_TURN;
 
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean validBoard(int column, int rows){
+		if(column == rows)
+		return true;
+		else
+			return false;
 	}
 
 	/**

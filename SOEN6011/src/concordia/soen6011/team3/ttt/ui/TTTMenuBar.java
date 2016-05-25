@@ -103,7 +103,8 @@ public class TTTMenuBar extends JMenuBar implements ActionListener {
 		// Board Menu
 		boardMenu = new JMenu("Game");
 		boardMenu.setMnemonic(KeyEvent.VK_B);
-
+		boardMenu.setName("Start Game Menu");
+		
 		newBoardMenuItem = new JMenuItem("New",new ImageIcon(this.getClass().getResource(ImagePath.NEW_BOARD)));
 		newBoardMenuItem.setMnemonic(KeyEvent.VK_N);
 		newBoardMenuItem.setActionCommand(this.newBoardEvent);
@@ -134,7 +135,7 @@ public class TTTMenuBar extends JMenuBar implements ActionListener {
 		// About Menu
 		aboutMenu = new JMenu("About");
 		aboutMenu.setMnemonic(KeyEvent.VK_U);
-
+		aboutMenu.setName("About Game Menu");
 		aboutApplicationMenuItem = new JMenuItem("Application",
 				new ImageIcon(this.getClass().getResource(ImagePath.ABOUT_APP)));
 		aboutApplicationMenuItem.setMnemonic(KeyEvent.VK_A);
