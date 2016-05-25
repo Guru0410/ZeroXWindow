@@ -26,6 +26,15 @@ public class TTTBoardTest {
 	}
 	
 	@Test
+	public void testValidBoard()
+	{
+		assertTrue(ttta.validBoard(3, 3));
+		assertFalse(ttta.validBoard(3, 4));
+		assertEquals(ttta.validBoard(3, 3), tttb.validBoard(4, 4));
+		
+	}
+	
+	@Test
 	public void testSetColumns()
 	{
 		ttta.setColumns(3);
