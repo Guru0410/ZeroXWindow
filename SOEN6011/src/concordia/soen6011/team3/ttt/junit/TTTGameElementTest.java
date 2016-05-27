@@ -1,12 +1,8 @@
 package concordia.soen6011.team3.ttt.junit;
 
 import static org.junit.Assert.*;
-
 import java.awt.AWTException;
-import java.awt.Robot;
-
 import org.junit.Test;
-
 import concordia.soen6011.team3.ttt.object.TTTGameElement;
 import concordia.soen6011.team3.ttt.object.TTTSquare;
 import concordia.soen6011.team3.ttt.object.TTTSymbol;
