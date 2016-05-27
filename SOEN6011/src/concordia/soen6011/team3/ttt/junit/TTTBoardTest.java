@@ -12,7 +12,7 @@ public class TTTBoardTest {
 	TTTBoard tttb = new TTTBoard(3,3);
 	TTTBoard tttc = new TTTBoard((int)3.9, (int)3.9);
 	
-	
+	// Test toggle of turn between both the players
 	@Test
 	public void testNextTurn() {
 		assertEquals(ttta.getPlayerTurn(), false);
@@ -25,6 +25,7 @@ public class TTTBoardTest {
 		
 	}
 	
+	//Test ValidBoard functionality.
 	@Test
 	public void testValidBoard()
 	{
@@ -34,18 +35,37 @@ public class TTTBoardTest {
 		
 	}
 	
+	
+	//Test the board width i.e. columns are delimited by min and max columns.
 	@Test
 	public void testSetColumns()
 	{
 		ttta.setColumns(3);
 		assertEquals(ttta.getColumns(),3);
+		ttta.setColumns(4);
+		assertNotSame(ttta.getColumns(),3);
+		//test if number of columns are less than min then assign min value for number of columns.
+		ttta.setColumns(1);
+		assertEquals(ttta.getColumns(), 3);
+		//test if number of columns are more than max value then assign max value for number of columns.
+		ttta.setColumns(10001);
+		assertEquals(ttta.getColumns(), 40);
 		
 	}
-
+	
+	//Test that the board height is delimited by max and min rows.
 	@Test
 	public void testSetRows()
-	{
-		assertEquals(tttc.getRows(), 3);
+	{	
+		ttta.setBoardHeight(4);
+		assertEquals(ttta.getRows(), 4);
+		//test if the number of rows are less than min then assign the max value.
+		ttta.setBoardHeight(1);
+		assertNotSame(ttta.getRows(), 1);
+		assertEquals(ttta.getRows(), 20);
+		//test if the number of rows are more than max then assign the max value.
+		ttta.setBoardHeight(30);
+		assertEquals(ttta.getRows(), 20);
 				
 	}
 }
